@@ -40,8 +40,7 @@ App-Level Tokens are required, so don't forget to generate it.
 | lang | Language; English (en) or Japanese (jp) | `en` (or `jp`) |
 | includeBot | Whether to detect quotes by bots as well | `true` or `false` |
 
-
-4. `yarn install` and `yarn rnu build`.
+4. `yarn install` and `yarn run build`.
 5. Run `node dist/main.js`.
 
 ## Feature
