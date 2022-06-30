@@ -1,6 +1,8 @@
 # slack-quote-watch
 Receive notifications when your posts are quoted in Slack.
 
+![Sample](https://user-images.githubusercontent.com/67552983/176787198-fd75159f-696b-47c6-a8cb-98a2886a985f.png)
+
 ## How to Build / Run
 1. Create Slack App. App manifest is as follows:
 
