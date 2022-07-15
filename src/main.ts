@@ -37,9 +37,22 @@ app.message(async ({ message, client, logger }) => {
     return;
   }
 
+  const messageText = (message as any).text;
+
   // Match link text of Slack workspace
-  const regexp = RegExp(`<(${workspaceURL}/archives/([0-9A-Z]+)/p([0-9]+))>`, "g");
-  const matches = (message as any).text.matchAll(regexp);
+  // <link>
+  const simpleLinkRegexp = RegExp(
+    `<(${workspaceURL.replaceAll(".", "\\.")}/archives/([0-9A-Z]+)/p([0-9]+))>`,
+    "g"
+  );
+  const simpleLinks = messageText.matchAll(simpleLinkRegexp);
+
+  // <link|text>
+  const textLinkRegexp = RegExp(
+    `<(${workspaceURL.replaceAll(".", "\\.")}/archives/([0-9A-Z]+)/p([0-9]+))\\|.+>`,
+    "g"
+  );
+  const textLinks = messageText.matchAll(textLinkRegexp);
 
   let matchGroup: {
     link: string;
@@ -47,7 +60,14 @@ app.message(async ({ message, client, logger }) => {
     ts: string;
   }[] = [];
 
-  for (const match of matches) {
+  for (const match of [...simpleLinks, ...textLinks]) {
+    if (match[1] === undefined || match[2] === undefined || match[3] === undefined) {
+      continue;
+    }
+
+    // eslint-disable-next-line no-console
+    console.log(match);
+
     matchGroup = [
       ...matchGroup,
       {

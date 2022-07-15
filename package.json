@@ -13,6 +13,7 @@
   "devDependencies": {
     "@slack/bolt": "^3.11.3",
     "@tsconfig/strictest": "^1.0.1",
+    "@types/node": "^18.0.4",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
     "dotenv": "^16.0.1",
