@@ -1,0 +1,36 @@
+name: Check
+
+on:
+  push:
+  pull_request:
+    types: [opened]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Prepare (lint)
+        run: "yarn install"
+      - name: Check (lint)
+        run: "yarn lint"
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Prepare (build)
+        run: "yarn install"
+      - name: Check (build)
+        run: "yarn build"
