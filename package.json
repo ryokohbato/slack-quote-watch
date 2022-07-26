@@ -11,7 +11,7 @@
     "lint": "eslint --fix && prettier --write --cache 'src/*.ts'"
   },
   "devDependencies": {
-    "@slack/bolt": "^3.12.0",
+    "@slack/bolt": "^3.12.1",
     "@tsconfig/strictest": "^1.0.1",
     "@types/node": "^18.6.1",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
